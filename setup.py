@@ -10,7 +10,7 @@ with open('README.md') as f:
     readme = f.read()
 
 setup(
-    name='requests_sigv4',
+    name='requests-sigv4',
     version='0.0.1',
     packages=['requests_sigv4'],
     url='https://github.com/cleardataeng/requests-sigv4',
