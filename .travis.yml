@@ -4,19 +4,21 @@ dist: xenial
 cache:
   directories:
   - ${HOME}/.cache
-matrix:
-  include:
-  - python: 3.4
-    env: TOXENV=py34
-  - python: 3.5
-    env: TOXENV=py35
-  - python: 3.6
-    env: TOXENV=py36
-  - python: 3.7
-    env: TOXENV=py37
+python:
+  - '3.4'
+  - '3.5'
+  - '3.6'
+  - '3.7'
 install:
-- pip install tox
+  - pip install .
+  - pip install -r requirements_dev.txt
 script:
-- tox
-notifications:
-  email: false
+  - python setup.py test
+deploy:
+  provider: pypi
+  user: cleardataeng
+  password:
+    secure: JSOx9ZOXWmXrP1NvaSVZUB1OeEy93f5jOctj0hdG0mitB3eKCGCeHZN4XHHwNGd3gvFzAod9Q6ZZjC+JB/ccVwVP6wDL4y8QauxlAQLUxsAWv6Vs0fR4SX+Kf8C9pYcVVxQWEXRxW+Tq7x56UzyTGBCIsSdMsw0PJ9XeZXBJrbfmAO0NrrZOQ5U8SVEpaiYjshM3SE+UNwlFuwdfw5xvchUUPF8b4NZdVSjmbtVt88VgrwnkQI5r0DG347cPcj7D+x/+jQpvTn7QkBvLOGQLuJP9OwUbJBYm6vupZAYDZR0XNodOLjBbu2hbDWELKiirG5gzg+vbnFnD84A4P1vYE6tfatpepkfLaqdl26fIMeDUuFB+WuxAuN9ID311JeY1Np+6FIi0qbbOBv2ROOt3mV1Ul7W0EBmEfg8N1ja77c7jnfBsGgMn+1l0wXX0Vbo1oAb5QyFjoAynh0Y0Eegcm3eW2tc/nij75G1SAWzC2gl5l9xxBpmy7pCX1YihxbAnzDU9MYZxPMa6PZEgSkrqePSAIVNVCncoJtpxSTPRjT7Nz4rAdFseQDidL98HfQYf0FPRRfeEuAF3EgXC0vv9hafXJyVtlGXbJEqWebRM3DHE9gGBr9g/6rGV2TGEjsIkgRsI2LlxqLEP6V9a7d+wwisWgzP6N/D7GMjL60rIrRI=
+  on:
+    tags: true
+    branch: master
