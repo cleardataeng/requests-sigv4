@@ -14,7 +14,7 @@ with open('README.md') as f:
 
 setup(
     name='requests-sigv4',
-    version='0.1.2',
+    version='0.1.3',
     packages=['requests_sigv4'],
     url='https://github.com/cleardataeng/requests-sigv4',
     license='Apache 2.0',
