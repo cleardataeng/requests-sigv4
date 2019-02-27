@@ -1,4 +1,6 @@
 import json
+
+import pytest
 import requests_sigv4
 
 API_REGION = 'us-west-2'
@@ -11,6 +13,7 @@ API_HEADERS = {
 }
 
 
+@pytest.mark.integration
 def test_get():
     req = requests_sigv4.requests.Sigv4Request(region=API_REGION)
     got = req.get(
@@ -18,8 +21,10 @@ def test_get():
         headers=API_HEADERS,
     )
     c = json.loads(got.content.decode('utf-8'))
+    print(c)
     assert (
         got.status_code == 200
-        or 'not authorized' in c.get('message')
+        or 'not authorized' in c.get('message', '')
+        or 'not authorized' in c.get('Message', '')
         or 'The security token included in the request is invalid.' == c.get('message')
     )
