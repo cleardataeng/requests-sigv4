@@ -26,5 +26,4 @@ def test_get():
         got.status_code == 200
         or 'not authorized' in c.get('message', '')
         or 'not authorized' in c.get('Message', '')
-        or 'The security token included in the request is invalid.' == c.get('message')
     )
