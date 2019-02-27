@@ -1,7 +1,7 @@
 import json
 
 import pytest
-import requests_sigv4
+from requests_sigv4 import Sigv4Request
 
 API_REGION = 'us-west-2'
 # PetStore mock API Gateway
@@ -14,7 +14,7 @@ API_HEADERS = {
 
 
 def test_get():
-    req = requests_sigv4.requests.Sigv4Request(region=API_REGION)
+    req = Sigv4Request(region=API_REGION)
     got = req.options(
         url='{}/pets'.format(API_PATH),
         headers=API_HEADERS,
@@ -24,7 +24,7 @@ def test_get():
 
 @pytest.mark.integration
 def test_get_integration():
-    req = requests_sigv4.requests.Sigv4Request(region=API_REGION)
+    req = Sigv4Request(region=API_REGION)
     got = req.get(
         url='{}/pets/1234'.format(API_PATH),
         headers=API_HEADERS,

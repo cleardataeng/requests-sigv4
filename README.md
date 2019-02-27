@@ -7,7 +7,7 @@ Python library for making AWS4-HMAC-SHA256 signed calls with requests.
 ---------
 
 ```python
-from requests_sigv4.requests import Sigv4Request
+from requests_sigv4 import Sigv4Request
 
 request = Sigv4Request(region="us-west-2")
 response = request.get(
