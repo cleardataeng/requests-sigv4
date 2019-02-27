@@ -18,4 +18,8 @@ def test_get():
         headers=API_HEADERS,
     )
     c = json.loads(got.content.decode('utf-8'))
-    assert got.status_code == 200 or 'not authorized' in c.get('Message')
+    assert (
+        got.status_code == 200
+        or 'not authorized' in c.get('Message')
+        or 'The security token included in the request is invalid.' == c.get('Message')
+    )
