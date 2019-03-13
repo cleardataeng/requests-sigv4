@@ -17,9 +17,25 @@ def test_get():
     req = Sigv4Request(region=API_REGION)
     got = req.options(
         url='{}/pets'.format(API_PATH),
+        params={
+            'foo': 'boo boo'
+        },
         headers=API_HEADERS,
     )
     assert got.status_code == 200
+
+
+def test_get_query_space():
+    req = Sigv4Request(region=API_REGION)
+    res = req.get(
+        url="https://httpbin.org/get",
+        params={
+            "foo": "bar bar",
+        },
+        headers=API_HEADERS
+        )
+    got = json.loads(res.content.decode('utf-8'))
+    assert got['url'] == 'https://httpbin.org/get?foo=bar bar'
 
 
 @pytest.mark.integration
@@ -30,7 +46,6 @@ def test_get_integration():
         headers=API_HEADERS,
     )
     c = json.loads(got.content.decode('utf-8'))
-    print(c)
     assert (
         got.status_code == 200
         or 'not authorized' in c.get('message', '')
