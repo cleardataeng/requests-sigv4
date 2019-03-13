@@ -18,10 +18,19 @@ install:
 script:
   - python setup.py test
 deploy:
-  provider: pypi
-  user: cleardataeng
-  password:
-    secure: DhK0AwKrYqmGDRT9xVmQJOZPhRA4D4ckk0zO8yvmGP+X7/2MAna5CCF8bPUh94ucAjkko9sVbAMdzoQ0KC5xtPJHTk2rcBWibl11G77+aRacHVnsu2MHCfJBxOkuIeWkCZCJMaItcs/rxBsnedYNp30YDLaUjDivXiAPKK/nP+El0LKjLkAW3LmTZTaewECkUTRP2u2SfdqW38GS79dGC4Zmgt5HpX/sIid72lnuM/J7hCYH4OELGZ33e7Yq+zp4DowyUtTrjYPsAuVPZsrM1heGcw8Slp3823mDhh1W4Ysq2hPWFYf+pjmjQoRsEhh9Fzw7dNhKrW3szzWWIsirFwB/CrQr04vVdcUEydy0PZ6uo0QUjvrDGDQOcYUs8KeETJAQ8wghZuaeo99I0qA2f6y7he9/zeguvITdOZHvQzSR6iA2gP7rPcRfjvRL3xuHTWYkcCa7jwuTNe0cFL6YAFuokM5An5TBjLaJ0YsBQsYikefF8+syflyBvln4WwlgJDQv5NEVP02kscxxDnRi6D31QWZwOi0Uv3JnsyfisvYeKjtJcsUBUm1B/6MksQYwvgqst219A/pp15ch+eZP2zE5KOO9t7L78EnvR1j0Es2wsRv/7lAb2UbVlNC2cu9nTc5WW0fAE4V4P0/2jza1YSvavaeQ4XXj3FXWw3ILLKs=
-  on:
-    tags: true
-  skip_existing: true
+  - provider: pypi
+    user: cleardataeng
+    password:
+      secure: DhK0AwKrYqmGDRT9xVmQJOZPhRA4D4ckk0zO8yvmGP+X7/2MAna5CCF8bPUh94ucAjkko9sVbAMdzoQ0KC5xtPJHTk2rcBWibl11G77+aRacHVnsu2MHCfJBxOkuIeWkCZCJMaItcs/rxBsnedYNp30YDLaUjDivXiAPKK/nP+El0LKjLkAW3LmTZTaewECkUTRP2u2SfdqW38GS79dGC4Zmgt5HpX/sIid72lnuM/J7hCYH4OELGZ33e7Yq+zp4DowyUtTrjYPsAuVPZsrM1heGcw8Slp3823mDhh1W4Ysq2hPWFYf+pjmjQoRsEhh9Fzw7dNhKrW3szzWWIsirFwB/CrQr04vVdcUEydy0PZ6uo0QUjvrDGDQOcYUs8KeETJAQ8wghZuaeo99I0qA2f6y7he9/zeguvITdOZHvQzSR6iA2gP7rPcRfjvRL3xuHTWYkcCa7jwuTNe0cFL6YAFuokM5An5TBjLaJ0YsBQsYikefF8+syflyBvln4WwlgJDQv5NEVP02kscxxDnRi6D31QWZwOi0Uv3JnsyfisvYeKjtJcsUBUm1B/6MksQYwvgqst219A/pp15ch+eZP2zE5KOO9t7L78EnvR1j0Es2wsRv/7lAb2UbVlNC2cu9nTc5WW0fAE4V4P0/2jza1YSvavaeQ4XXj3FXWw3ILLKs=
+    skip_existing: true
+    on:
+      tags: true
+      branch: master
+  - provider: pypi
+    user: cleardataeng
+    server: https://test.pypi.org/legacy/
+    password:
+      secure: TgUavz+INQ1xKl8N/EVEIs6Lb5LOafC2nHaZINUGcRMqmSChB56rNGYxDSl+Og1R4nY35ohw86rTnbjy8AIqV3zN0f8seLDrazBm2coHrXmZAo62lz4VQHVIiELKtyBDEW1IaJk2pzIRbivKwuOarAOm8VbLYVJMmwUBVMOfMv5fHxp0GJg2KN4kHbbWB69v7nAJ+h9roCdTuHEwLnr9ZLrZk4LcX+mzkES8u+vBQAzzrnChxuMV+epcH/TsTU/J3LTK1mIwEWmqL/Grz/yMqBqjwBTyYjm3FHYuFgPgG053RX88HvFdtuMBDikgUB8ZSC6kt/BGmtGMtA2Sq8XX9LYZI9A2J2+zEDFMhQm42vmxXXcezMZUQXuFdasGclFGWzAlSG8jXpVBLGvJSPggBd1Yr/hpV2uaRkosEDGq8sD0shPIDUHevBm97bEnzJJd4vovmQ5pug4/V+JwnMLDRYIN+/9FI1iGopYnWVXcZ+xUmxZ/EkA5pdPwxWqSpd10ID5fzoWuYejc9jrgO1o8ZlJf27RoCJfmJRh1D1xN/ZsSwVVmE/UPKv28ijkXrStm3O649Dp7oSXJ930px3UiVrYcWveq/HXu+Mth7FLSpeBQn9hrIY670sogg6F5f7avU6RVDUrni2BycPtooLDWZa21L4cHsVsqyaeM6V174+U=
+    skip_existing: true
+    on:
+      branch: develop
