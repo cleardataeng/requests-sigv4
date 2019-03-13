@@ -1,18 +1,18 @@
 language: python
 cache:
   directories:
-  - "${HOME}/.cache"
+    - "${HOME}/.cache"
 env:
   - AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-west-2
 matrix:
   include:
-    - python: 2.7
-    - python: 3.4
-    - python: 3.5
-    - python: 3.6
-    - python: 3.7
-      dist: xenial
-      sudo: false
+  - python: 2.7
+  - python: 3.4
+  - python: 3.5
+  - python: 3.6
+  - python: 3.7
+    dist: xenial
+    sudo: false
 install:
   - pip install .
   - pip install pytest pytest-runner
@@ -31,7 +31,7 @@ deploy:
     user: cleardataeng
     server: https://test.pypi.org/legacy/
     password:
-      secure: vRzIlzgJqWoh40M/GlZ1CfrnaWndunw2PcfAYWK9i/K/9zGd+12fUIy952EkMMYzPVubCvNjKE3fYusqm40968z6h7L6Db/S1g4ZHwYdGFKWqOsUFsL7O2rbNAaVW2nGwlswOW3z/+JCPJt8ayDkAjOM3Ey1LROF+AKktFp7297wOU+xE2fTgAkl1UQN2MyqIu2+lkJrMMn/l/rxjOVirYDyMIZJEp0Igm+qUwWfFUb17rpqqAeVCKmnFX4YdSJM5V4rXZBhLFYfkXQx0ZCWlMdAzc8ngBQdmf7DWZfDUuA0nN6Z4+YQw637pjDsahGW7KKxrRRLM9YDJzTobD0kmjM4EU6DBqXJNWRiOxxF1PdKBINhsEDbeHhGvDQ7Rm0lmrEH4mKE0vjp7/fByzsuVa9EgTN9qwZGek0PTI9dRSuWZzIrkEVfICJ1+bfktVt92wPaWY05rJ6kcMT42s5cW2WS2aUfzzn8hhDWMWNXZFpnG87A/HSn+7zvcTtC4/qSm0HD8lHlpqcWtkalgbPbm1nvrnAfp0ldTviW/GvTkzPvUZv5srCBzos7Vx82czwqTjwpZPvbVwKxp0+/cX+iXZ7gTDEGVyGZFsKSl9+oYuT4Drsdy0nybc55/TKSg3N0fPMFRjn/MOhjUPs5WzlDI8LnE07qWHzTPAh7iQubh0s=
+      secure: "BCurDjHTyNKxLJ3cPwCOyCb+SptIbTYBqFjF8+XZClEdivW2qQgIPTuYghph7Z3QT0gA6k6VZJtFfy/4LUPY35eoXjtbunfBaB2cExa9N4wHcsXNbInQJuZaRG8BmEmbcBnIsc5VNzgQxYd7b23SVa8RaPIgQ1qDtTj157onH9eYltkWLNPKZVKf80lTmX9eZzB+oaih0/mP2HKvFckcXXUV4espEO9zFAtTo4c6XdN8KXjSkFPUAcxV+oz4NVK9Sx0ClAkIS3jCt+wNCtX/Cb1fMkqnDET98Qp+G82Bw18W8GWTH6NQt6uVEE1CReST8Jq4Jrw2oyNZfUL7uT3zK+p7e1trQJiPAhdGK43BA1wIgxA4/AeNR5uSSC0u2TiYY4a8GWZ6tfu3zcZRwgS5loUio77bjesnV2jMi32gxVqAgohC+AxLOIx1rsNbl8XmSjZrmoytrGFaS3l1LraMuxJ7lKgFO1OT7j+MLjhYlSDGhcEPwEKkg/zZi5vHUVHsXuz/IF96PlNwSJY96g7xuUA9Gcfhc2awDZocp8a49b4i8VByYRrvkod1sz5M4FiTETGCyF0Da9g8uaWqcRSEiV2qHY+M0myKOBI4MGsqzIS1/U/m1cXdJ1TFQKIIx1tqW2m4fLsuPEAItYesBSxDWjRMPRFW6LMv4R908DSD/rs="
     skip_existing: true
     on:
       branch: develop
