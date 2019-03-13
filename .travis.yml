@@ -1,17 +1,18 @@
 language: python
-sudo: false
-dist: xenial
 cache:
   directories:
-  - ${HOME}/.cache
+  - "${HOME}/.cache"
 env:
   - AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-west-2
-python:
-  - '2.7'
-  - '3.4'
-  - '3.5'
-  - '3.6'
-  - '3.7'
+matrix:
+  include:
+    - python: 2.7
+    - python: 3.4
+    - python: 3.5
+    - python: 3.6
+    - python: 3.7
+      dist: xenial
+      sudo: false
 install:
   - pip install .
   - pip install pytest pytest-runner
@@ -30,7 +31,7 @@ deploy:
     user: cleardataeng
     server: https://test.pypi.org/legacy/
     password:
-      secure: TgUavz+INQ1xKl8N/EVEIs6Lb5LOafC2nHaZINUGcRMqmSChB56rNGYxDSl+Og1R4nY35ohw86rTnbjy8AIqV3zN0f8seLDrazBm2coHrXmZAo62lz4VQHVIiELKtyBDEW1IaJk2pzIRbivKwuOarAOm8VbLYVJMmwUBVMOfMv5fHxp0GJg2KN4kHbbWB69v7nAJ+h9roCdTuHEwLnr9ZLrZk4LcX+mzkES8u+vBQAzzrnChxuMV+epcH/TsTU/J3LTK1mIwEWmqL/Grz/yMqBqjwBTyYjm3FHYuFgPgG053RX88HvFdtuMBDikgUB8ZSC6kt/BGmtGMtA2Sq8XX9LYZI9A2J2+zEDFMhQm42vmxXXcezMZUQXuFdasGclFGWzAlSG8jXpVBLGvJSPggBd1Yr/hpV2uaRkosEDGq8sD0shPIDUHevBm97bEnzJJd4vovmQ5pug4/V+JwnMLDRYIN+/9FI1iGopYnWVXcZ+xUmxZ/EkA5pdPwxWqSpd10ID5fzoWuYejc9jrgO1o8ZlJf27RoCJfmJRh1D1xN/ZsSwVVmE/UPKv28ijkXrStm3O649Dp7oSXJ930px3UiVrYcWveq/HXu+Mth7FLSpeBQn9hrIY670sogg6F5f7avU6RVDUrni2BycPtooLDWZa21L4cHsVsqyaeM6V174+U=
+      secure: vRzIlzgJqWoh40M/GlZ1CfrnaWndunw2PcfAYWK9i/K/9zGd+12fUIy952EkMMYzPVubCvNjKE3fYusqm40968z6h7L6Db/S1g4ZHwYdGFKWqOsUFsL7O2rbNAaVW2nGwlswOW3z/+JCPJt8ayDkAjOM3Ey1LROF+AKktFp7297wOU+xE2fTgAkl1UQN2MyqIu2+lkJrMMn/l/rxjOVirYDyMIZJEp0Igm+qUwWfFUb17rpqqAeVCKmnFX4YdSJM5V4rXZBhLFYfkXQx0ZCWlMdAzc8ngBQdmf7DWZfDUuA0nN6Z4+YQw637pjDsahGW7KKxrRRLM9YDJzTobD0kmjM4EU6DBqXJNWRiOxxF1PdKBINhsEDbeHhGvDQ7Rm0lmrEH4mKE0vjp7/fByzsuVa9EgTN9qwZGek0PTI9dRSuWZzIrkEVfICJ1+bfktVt92wPaWY05rJ6kcMT42s5cW2WS2aUfzzn8hhDWMWNXZFpnG87A/HSn+7zvcTtC4/qSm0HD8lHlpqcWtkalgbPbm1nvrnAfp0ldTviW/GvTkzPvUZv5srCBzos7Vx82czwqTjwpZPvbVwKxp0+/cX+iXZ7gTDEGVyGZFsKSl9+oYuT4Drsdy0nybc55/TKSg3N0fPMFRjn/MOhjUPs5WzlDI8LnE07qWHzTPAh7iQubh0s=
     skip_existing: true
     on:
       branch: develop
