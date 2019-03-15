@@ -1,9 +1,10 @@
 import sys
 
 from requests_sigv4.sigv4request import Sigv4Request
+from requests_sigv4.version import VERSION
 
 __all__ = ('Sigv4Request',)
-__version__ = '0.1.4'
+__version__ = VERSION
 
 
 _ver = sys.version_info

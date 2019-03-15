@@ -1,9 +1,10 @@
-import os
-import re
 from setuptools import setup, find_packages
 
-ROOT = os.path.dirname(__file__)
-VERSION_RE = re.compile(r'''__version__ = ['"]([0-9.]+)['"]''')
+with open('VERSION') as version_file:
+    version = version_file.read().strip()
+
+with open('requests_sigv4/version.py', 'w') as f:
+    f.write("VERSION = '%s'\n" % version)
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
@@ -14,15 +15,9 @@ install_requires = [
     'boto3',
 ]
 
-
-def get_version():
-    init = open(os.path.join(ROOT, 'requests_sigv4', '__init__.py')).read()
-    return VERSION_RE.search(init).group(1)
-
-
 setup(
     name='requests-sigv4',
-    version=get_version(),
+    version=version,
     packages=find_packages(exclude=['tests*']),
     url='https://github.com/cleardataeng/requests-sigv4',
     license='Apache License 2.0',
