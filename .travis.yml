@@ -1,27 +1,37 @@
 language: python
-sudo: false
-dist: xenial
 cache:
   directories:
-  - ${HOME}/.cache
+    - "${HOME}/.cache"
 env:
   - AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=us-west-2
-python:
-  - '2.7'
-  - '3.4'
-  - '3.5'
-  - '3.6'
-  - '3.7'
+matrix:
+  include:
+  - python: 2.7
+  - python: 3.4
+  - python: 3.5
+  - python: 3.6
+  - python: 3.7
+    dist: xenial
+    sudo: false
 install:
   - pip install .
   - pip install pytest pytest-runner
 script:
   - python setup.py test
 deploy:
-  provider: pypi
-  user: cleardataeng
-  password:
-    secure: DhK0AwKrYqmGDRT9xVmQJOZPhRA4D4ckk0zO8yvmGP+X7/2MAna5CCF8bPUh94ucAjkko9sVbAMdzoQ0KC5xtPJHTk2rcBWibl11G77+aRacHVnsu2MHCfJBxOkuIeWkCZCJMaItcs/rxBsnedYNp30YDLaUjDivXiAPKK/nP+El0LKjLkAW3LmTZTaewECkUTRP2u2SfdqW38GS79dGC4Zmgt5HpX/sIid72lnuM/J7hCYH4OELGZ33e7Yq+zp4DowyUtTrjYPsAuVPZsrM1heGcw8Slp3823mDhh1W4Ysq2hPWFYf+pjmjQoRsEhh9Fzw7dNhKrW3szzWWIsirFwB/CrQr04vVdcUEydy0PZ6uo0QUjvrDGDQOcYUs8KeETJAQ8wghZuaeo99I0qA2f6y7he9/zeguvITdOZHvQzSR6iA2gP7rPcRfjvRL3xuHTWYkcCa7jwuTNe0cFL6YAFuokM5An5TBjLaJ0YsBQsYikefF8+syflyBvln4WwlgJDQv5NEVP02kscxxDnRi6D31QWZwOi0Uv3JnsyfisvYeKjtJcsUBUm1B/6MksQYwvgqst219A/pp15ch+eZP2zE5KOO9t7L78EnvR1j0Es2wsRv/7lAb2UbVlNC2cu9nTc5WW0fAE4V4P0/2jza1YSvavaeQ4XXj3FXWw3ILLKs=
-  on:
-    tags: true
-  skip_existing: true
+  - provider: pypi
+    user: cleardataeng
+    password:
+      secure: DhK0AwKrYqmGDRT9xVmQJOZPhRA4D4ckk0zO8yvmGP+X7/2MAna5CCF8bPUh94ucAjkko9sVbAMdzoQ0KC5xtPJHTk2rcBWibl11G77+aRacHVnsu2MHCfJBxOkuIeWkCZCJMaItcs/rxBsnedYNp30YDLaUjDivXiAPKK/nP+El0LKjLkAW3LmTZTaewECkUTRP2u2SfdqW38GS79dGC4Zmgt5HpX/sIid72lnuM/J7hCYH4OELGZ33e7Yq+zp4DowyUtTrjYPsAuVPZsrM1heGcw8Slp3823mDhh1W4Ysq2hPWFYf+pjmjQoRsEhh9Fzw7dNhKrW3szzWWIsirFwB/CrQr04vVdcUEydy0PZ6uo0QUjvrDGDQOcYUs8KeETJAQ8wghZuaeo99I0qA2f6y7he9/zeguvITdOZHvQzSR6iA2gP7rPcRfjvRL3xuHTWYkcCa7jwuTNe0cFL6YAFuokM5An5TBjLaJ0YsBQsYikefF8+syflyBvln4WwlgJDQv5NEVP02kscxxDnRi6D31QWZwOi0Uv3JnsyfisvYeKjtJcsUBUm1B/6MksQYwvgqst219A/pp15ch+eZP2zE5KOO9t7L78EnvR1j0Es2wsRv/7lAb2UbVlNC2cu9nTc5WW0fAE4V4P0/2jza1YSvavaeQ4XXj3FXWw3ILLKs=
+    skip_existing: true
+    on:
+      tags: true
+      branch: master
+  - provider: pypi
+    user: cleardataeng
+    server: https://test.pypi.org/legacy/
+    password:
+      secure: "LcB3UBxx0oY0LMEA/Kn4iSh8NkTOSOrM8uXtbheh/8rTbmukJiEV6LyPddRzYuSw5JlinzfjK+xJqZJb4Uf9+llIPs3JGeDbENrAVqBXjgcB51Vw88PGL8xDl19RIdQGLXvjHWTTEoRtxnz4UFXO0f9W3rkGeuLa0p1YYka7Qd56ZldQLNel4LXA+0IRIEYXQgtm6DJHcjj9SFcBzYdLO4ZVzp3xyzrGHFgBSZdRh1Y8V8CA5msZgVp64T6skKin/Obt4ru9MvBIjeXdF5VO9DYkEpBeYG3TTzNxS7qRF2SxLjNmn+0SGoPPMQA68uGBOUtt9CdRu19SvKXqJKR/QIEdy9G7iRYpp4TAXqkwHFINQD67GEGqDd3ER10kRSoq+YOi8+NyX+7UL3T709Xb5UPfP7eBdZ5Yo4AhDpHs2DWoJm+kgCggh8C+ExWXSpD43vbZN9a+GmYtarAnurR86hQ0KGupsh2BBHnf+scIgvts1THXU8toSqWZW2n3tw3MAcbiZBG29NZhgtQKrXbFBGtg46gqK1u//vctbyrJct1StihnI0fuFdaaTZW6u4a0fwfAx12zhymODnIDjW8EM1hT7MbDVvruCe6Cw1YfKTBBrdxuApV4YVPfIN+8/T255xciHqeBfHqB6/M/bcCiG2Gyumm5LG9tcMbEPGPre7Y="
+    skip_existing: true
+    on:
+      branch: develop
