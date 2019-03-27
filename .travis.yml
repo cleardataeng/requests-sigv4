@@ -26,7 +26,6 @@ deploy:
     skip_existing: true
     on:
       tags: true
-      branch: master
   - provider: pypi
     user: cleardataeng
     server: https://test.pypi.org/legacy/
