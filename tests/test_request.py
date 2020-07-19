@@ -38,6 +38,26 @@ def test_get_query_space():
     assert got['url'] == 'https://httpbin.org/get?foo=bar bar'
 
 
+def test_get_query_proxy_unreachable(monkeypatch):
+    from requests.exceptions import ProxyError
+    monkeypatch.setenv('HTTPS_PROXY', 'https://unreachable.proxy:80')
+    req = Sigv4Request(region=API_REGION)
+    try:
+        req.get(
+            url="https://httpbin.org/get",
+            params={
+                "foo": "bar bar",
+            },
+            headers=API_HEADERS
+        )
+        assert False is True, "Should have raised ProxyError"
+    except ProxyError:
+        assert True is True, "Properly raised ProxyError"
+    else:
+        assert False is True, "Expected Proxy Error due to unreachable proxy environment variable"
+    finally:
+        monkeypatch.delenv('HTTPS_PROXY')
+
 @pytest.mark.integration
 def test_get_integration():
     req = Sigv4Request(region=API_REGION)
