@@ -113,26 +113,22 @@ class Sigv4Request(object):
 
         auth = AWSV4Sign(self.creds, self.region, self.service)
         session = requests.sessions.Session()
-        req = requests.Request(
-            method,
-            url,
-            data=data,
-            headers=headers,
-            params=params,
-            cookies=cookies,
-            files=files,
-            auth=auth,
-            json=json,
-            hooks=hooks)
-        prepped = req.prepare()
-        response = session.send(prepped,
-                                stream=stream,
-                                verify=verify,
-                                proxies=proxies,
-                                cert=cert,
-                                timeout=timeout,
-                                allow_redirects=allow_redirects
-                                )
+        response = session.request(method,
+                                   url,
+                                   params=params,
+                                   data=data,
+                                   headers=headers,
+                                   cookies=cookies,
+                                   files=files,
+                                   auth=auth,
+                                   timeout=timeout,
+                                   allow_redirects=allow_redirects,
+                                   proxies=proxies,
+                                   hooks=hooks,
+                                   stream=stream,
+                                   verify=verify,
+                                   cert=cert,
+                                   json=json)
         session.close()
         return response
 
