@@ -39,3 +39,9 @@ In the background, the credential provider being used is from [boto3](https://bo
 Credentials from environment variables and the AWS shared credential file will work in the same manner they do with boto3 and the AWS command line.
 
 More about [boto3 credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html).
+
+### Testing
+-----------
+Tests are run using [tox](https://pypi.org/project/tox). These aren't run as part
+of the CI due to the AWS credential requirements, so the tests are validated locally.
+

@@ -24,20 +24,3 @@ jobs:
       - name: Run linter
         run: flake8 requests_sigv4/ tests/
 
-  pytest:
-    name: Pytest
-    runs-on: ubuntu-latest
-    needs: lint
-    steps:
-
-      - name: Checkout Code Repository
-        uses: actions/checkout@v3
-
-      - name: Install Requirements
-        run: |
-          pip install -r requirements.txt
-          pip install tox
-
-      - name: Run tests
-        run: tox
-

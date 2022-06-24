@@ -38,7 +38,6 @@ def test_get_query_space():
     assert got['url'] == 'https://httpbin.org/get?foo=bar bar'
 
 
-@pytest.mark.integration
 def test_get_integration():
     req = Sigv4Request(region=API_REGION)
     got = req.get(
