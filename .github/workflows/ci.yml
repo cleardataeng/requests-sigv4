@@ -22,7 +22,7 @@ jobs:
           pip install flake8
 
       - name: Run linter
-        run: flake8 seshypy/ tests/
+        run: flake8 requests_sigv4/ tests/
 
   pytest:
     name: Pytest
