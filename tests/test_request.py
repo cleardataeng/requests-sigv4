@@ -1,6 +1,6 @@
 import json
 
-import pytest
+import pytest  # noqa: F401
 from requests_sigv4 import Sigv4Request
 
 API_REGION = 'us-west-2'
