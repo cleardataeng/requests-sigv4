@@ -18,6 +18,7 @@ setup(
     author='ClearDATA Engineering',
     author_email='support@cleardata.com',
     description='Library for making sigv4 requests to AWS API endpoints',
+    long_description='Library for making sigv4 requests to AWS API endpoints',
     install_requires=install_requires,
     keywords='aws requests sign sigv4',
     classifiers=[
