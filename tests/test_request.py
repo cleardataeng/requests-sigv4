@@ -1,6 +1,6 @@
 import json
 
-import pytest
+import pytest  # noqa: F401
 from requests_sigv4 import Sigv4Request
 
 API_REGION = 'us-west-2'
@@ -33,12 +33,11 @@ def test_get_query_space():
             "foo": "bar bar",
         },
         headers=API_HEADERS
-        )
+    )
     got = json.loads(res.content.decode('utf-8'))
     assert got['url'] == 'https://httpbin.org/get?foo=bar bar'
 
 
-@pytest.mark.integration
 def test_get_integration():
     req = Sigv4Request(region=API_REGION)
     got = req.get(
