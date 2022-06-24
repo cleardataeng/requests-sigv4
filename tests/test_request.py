@@ -33,7 +33,7 @@ def test_get_query_space():
             "foo": "bar bar",
         },
         headers=API_HEADERS
-        )
+    )
     got = json.loads(res.content.decode('utf-8'))
     assert got['url'] == 'https://httpbin.org/get?foo=bar bar'
 

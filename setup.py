@@ -1,11 +1,5 @@
 from setuptools import setup, find_packages
 
-with open('VERSION') as version_file:
-    version = version_file.read().strip()
-
-with open('requests_sigv4/version.py', 'w') as f:
-    f.write("VERSION = '%s'\n" % version)
-
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
@@ -17,7 +11,7 @@ install_requires = [
 
 setup(
     name='requests-sigv4',
-    version=version,
+    version='0.1.6',
     packages=find_packages(exclude=['tests*']),
     url='https://github.com/cleardataeng/requests-sigv4',
     license='Apache License 2.0',
@@ -28,10 +22,6 @@ setup(
     long_description=open('README.md').read(),
     install_requires=install_requires,
     keywords='aws requests sign sigv4',
-    setup_requires=['pytest-runner'],
-    tests_require=[
-        'pytest'
-    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -44,5 +34,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
 )

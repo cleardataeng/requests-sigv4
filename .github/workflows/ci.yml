@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+
+  push:
+    branches: ["master", "main"]
+    paths-ignore: ["docs/**"]
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v3
+
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+
+      - name: Run linter
+        run: flake8 seshypy/ tests/
+
+  pytest:
+    name: Pytest
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+
+      - name: Checkout Code Repository
+        uses: actions/checkout@v3
+
+      - name: Install Requirements
+        run: |
+          pip install -r requirements.txt
+          pip install tox
+
+      - name: Run tests
+        run: tox
+
